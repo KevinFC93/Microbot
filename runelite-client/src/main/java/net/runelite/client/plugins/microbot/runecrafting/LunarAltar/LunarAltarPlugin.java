@@ -29,21 +29,21 @@ import java.time.Instant;
         tags = {"runecrafting", "microbot", "skilling"},
         enabledByDefault = false
 )
-public class OuraniaPlugin extends Plugin {
+public class LunarAltarPlugin extends Plugin {
     
     @Inject
-    private OuraniaConfig config;
+    private LunarAltarConfig config;
     
     @Provides
-    OuraniaConfig provideConfig(ConfigManager configManager) { return configManager.getConfig(OuraniaConfig.class); }
+    LunarAltarConfig provideConfig(ConfigManager configManager) { return configManager.getConfig(LunarAltarConfig.class); }
     
     @Inject
     private OverlayManager overlayManager;
     @Inject
-    private OuraniaOverlay ouraniaOverlay;
+    private LunarAltarOverlay ouraniaOverlay;
     
     @Inject
-    private OuraniaScript ouraniaScript;
+    private LunarAltarScript ouraniaScript;
 
     public static String version = "1.2.0";
 
@@ -114,45 +114,45 @@ public class OuraniaPlugin extends Plugin {
     
     @Subscribe
     public void onConfigChanged(ConfigChanged event) {
-        if (!event.getGroup().equals(OuraniaConfig.configGroup)) return;
+        if (!event.getGroup().equals(LunarAltarConfig.configGroup)) return;
         
-        if (event.getKey().equals(OuraniaConfig.essence)) {
+        if (event.getKey().equals(LunarAltarConfig.essence)) {
             essence = config.essence();
         }
         
-        if (event.getKey().equals(OuraniaConfig.food)) {
+        if (event.getKey().equals(LunarAltarConfig.food)) {
             rs2Food = config.food();
         }
         
-        if (event.getKey().equals(OuraniaConfig.eatAtPercent)) {
+        if (event.getKey().equals(LunarAltarConfig.eatAtPercent)) {
             eatAtPercent = config.eatAtPercent();
         }
 
-        if (event.getKey().equals(OuraniaConfig.useEnergyRestorePotions)){
+        if (event.getKey().equals(LunarAltarConfig.useEnergyRestorePotions)){
             useEnergyRestorePotions = config.useEnergyRestorePotions();
         }
 
-        if (event.getKey().equals(OuraniaConfig.drinkAtPercent)){
+        if (event.getKey().equals(LunarAltarConfig.drinkAtPercent)){
             drinkAtPercent = config.drinkAtPercent();
         }
 
-        if (event.getKey().equals(OuraniaConfig.path)){
+        if (event.getKey().equals(LunarAltarConfig.path)){
             path = config.path();
         }
 
-        if (event.getKey().equals(OuraniaConfig.useDepositAll)){
+        if (event.getKey().equals(LunarAltarConfig.useDepositAll)){
             useDepositAll = config.useDepositAll();
         }
-        if (event.getKey().equals(OuraniaConfig.useMassWorld)){
+        if (event.getKey().equals(LunarAltarConfig.useMassWorld)){
             useMassWorld = config.useMassWorld();
         }
 
-        if (event.getKey().equals(OuraniaConfig.toggleOverlay)){
+        if (event.getKey().equals(LunarAltarConfig.toggleOverlay)){
             toggleOverlay = config.toggleOverlay();
             toggleOverlay(toggleOverlay);
         }
 
-        if (event.getKey().equals(OuraniaConfig.toggleProfitCalculator)){
+        if (event.getKey().equals(LunarAltarConfig.toggleProfitCalculator)){
             toggleProfitCalculator = config.toggleProfitCalculator();
         }
     }
@@ -174,7 +174,7 @@ public class OuraniaPlugin extends Plugin {
 
     private void toggleOverlay(boolean hideOverlay) {
         if (overlayManager != null) {
-            boolean hasOverlay = overlayManager.anyMatch(ov -> ov.getName().equalsIgnoreCase(OuraniaOverlay.class.getSimpleName()));
+            boolean hasOverlay = overlayManager.anyMatch(ov -> ov.getName().equalsIgnoreCase(LunarAltarOverlay.class.getSimpleName()));
 
             if (hideOverlay) {
                 if(!hasOverlay) return;

@@ -13,12 +13,12 @@ import java.awt.*;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 
-public class OuraniaOverlay extends OverlayPanel {
-    private final OuraniaPlugin plugin;
+public class LunarAltarOverlay extends OverlayPanel {
+    private final LunarAltarPlugin plugin;
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     @Inject
-    OuraniaOverlay(OuraniaPlugin plugin) {
+    LunarAltarOverlay(LunarAltarPlugin plugin) {
         super(plugin);
         this.plugin = plugin;
         setPosition(OverlayPosition.TOP_LEFT);
@@ -30,7 +30,7 @@ public class OuraniaOverlay extends OverlayPanel {
         try {
             panelComponent.setPreferredSize(new Dimension(200, 300));
             panelComponent.getChildren().add(TitleComponent.builder()
-                    .text("Ourania Altar V" + OuraniaPlugin.version)
+                    .text("Ourania Altar V" + LunarAltarPlugin.version)
                     .color(ColorUtil.fromHex("0077B6"))
                     .build());
 

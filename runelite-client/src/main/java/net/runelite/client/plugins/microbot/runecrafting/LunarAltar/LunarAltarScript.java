@@ -7,7 +7,7 @@ import net.runelite.client.plugins.microbot.Microbot;
 import net.runelite.client.plugins.microbot.Script;
 import net.runelite.client.plugins.microbot.breakhandler.BreakHandlerScript;
 import net.runelite.client.plugins.microbot.qualityoflife.scripts.pouch.Pouch;
-import net.runelite.client.plugins.microbot.runecrafting.LunarAltar.enums.OuraniaState;
+import net.runelite.client.plugins.microbot.runecrafting.LunarAltar.enums.LunarAltarState;
 import net.runelite.client.plugins.microbot.runecrafting.LunarAltar.enums.Path;
 import net.runelite.client.plugins.microbot.util.antiban.Rs2Antiban;
 import net.runelite.client.plugins.microbot.util.antiban.enums.Activity;
@@ -36,16 +36,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import java.awt.event.KeyEvent;
-public class OuraniaScript extends Script {
+public class LunarAltarScript extends Script {
     
     private final WorldArea lunarAltarArea = new WorldArea(new WorldPoint(2150, 3860, 0), 12, 12);
     private final List<Integer> massWorlds = List.of(327, 480);
-    private final OuraniaPlugin plugin;
-    public static OuraniaState state;
+    private final LunarAltarPlugin plugin;
+    public static LunarAltarState state;
     private int selectedWorld = 0;
     
     @Inject
-    public OuraniaScript(OuraniaPlugin plugin) {
+    public LunarAltarScript(LunarAltarPlugin plugin) {
         this.plugin = plugin;
     }
     
@@ -284,11 +284,11 @@ public class OuraniaScript extends Script {
         return false;
     }
     
-    private OuraniaState updateState() {
-        if (hasRequiredItems() && !isNearAltar()) return OuraniaState.RUNNING_TO_ALTAR;
-        if (hasRequiredItems() && isNearAltar()) return OuraniaState.CRAFTING;
-        if ((!hasRequiredItems() && isNearAltar()) || (!hasRequiredItems() && !isNearEniola()))  return OuraniaState.RESETTING;
-        if (!hasRequiredItems() && isNearEniola()) return OuraniaState.BANKING;
+    private LunarAltarState updateState() {
+        if (hasRequiredItems() && !isNearAltar()) return LunarAltarState.RUNNING_TO_ALTAR;
+        if (hasRequiredItems() && isNearAltar()) return LunarAltarState.CRAFTING;
+        if ((!hasRequiredItems() && isNearAltar()) || (!hasRequiredItems() && !isNearEniola()))  return LunarAltarState.RESETTING;
+        if (!hasRequiredItems() && isNearEniola()) return LunarAltarState.BANKING;
         return null;
     }
 

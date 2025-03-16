@@ -5,13 +5,13 @@ import net.runelite.client.plugins.microbot.runecrafting.LunarAltar.enums.Essenc
 import net.runelite.client.plugins.microbot.runecrafting.LunarAltar.enums.Path;
 import net.runelite.client.plugins.microbot.util.misc.Rs2Food;
 
-@ConfigGroup(OuraniaConfig.configGroup)
+@ConfigGroup(LunarAltarConfig.configGroup)
 @ConfigInformation(
         "• This plugin will craft runes at Lunar Altar<br />" +
         "• If using deposit all feature, <b>ensure you lock the slots you wish to keep in inventory</b> <br />" +
         "• Ensure you have a runepouch with your runes for teleport to LunarIsles <br />"
 )
-public interface OuraniaConfig extends Config {
+public interface LunarAltarConfig extends Config {
     String configGroup = "micro-ourania";
     
     String essence = "essence";
